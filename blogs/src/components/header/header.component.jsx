@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.webp";
+
+import { useUser } from "../../context/user-context/user.context";
 
 import { login, logout } from "../../service/auth.js";
 
@@ -11,31 +13,25 @@ import Profile from "../profile/profile.component";
 import "./header.styles.scss";
 
 const Header = () => {
-  const [currentUser, setCurrentUser] = useState({});
-
+  const { user, userLogin, userLogout } = useUser();
   const signIn = async () => {
-    const { user } = await login();
-    if (user) {
-      const { displayName, photoURL } = user;
-      setCurrentUser({ displayName, photoURL });
-    }
+    const { token, userData } = await login();
+    userLogin({ token, ...userData });
   };
   const signOut = async () => {
     await logout();
+    userLogout();
   };
   return (
     <div className="header">
       <Link to="/">
         <img src={logo} alt="Logo" />
       </Link>
-      {currentUser?.displayName && (
-        <Profile
-          userName={currentUser?.displayName}
-          imgUrl={currentUser?.photoURL}
-        />
+      {user?.displayName && (
+        <Profile userName={user?.displayName} imgUrl={user?.photoURL} />
       )}
       <div>
-        {currentUser?.displayName ? (
+        {user?.displayName ? (
           <CustomButton onClick={signOut} className="sign-button">
             Log out
           </CustomButton>

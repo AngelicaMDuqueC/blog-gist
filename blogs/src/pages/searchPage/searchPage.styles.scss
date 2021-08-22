@@ -1,6 +1,11 @@
 .searchPage {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   padding: 20px 80px;
+  & .search-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

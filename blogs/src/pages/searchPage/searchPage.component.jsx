@@ -5,6 +5,7 @@ import Title from "../../components/title/title.component";
 import Text from "../../components/text/text.component";
 import Search from "../../components/search/search.component";
 import Result from "../../components/result/result.component";
+import Background from "../../components/background/background.component";
 
 import "./searchPage.styles.scss";
 
@@ -15,10 +16,13 @@ const SearchPage = () => {
   const [hasResult, setHasResult] = useState(false);
   return (
     <div className="searchPage">
-      <Title>{titleBlog}</Title>
-      <Text>{textDefault}</Text>
-      <Search />
-      {hasResult && <Result />}
+      <section className="search-content">
+        <Title>{titleBlog}</Title>
+        <Text>{textDefault}</Text>
+        <Search />
+        {hasResult && <Result />}
+      </section>
+      <Background />
     </div>
   );
 };

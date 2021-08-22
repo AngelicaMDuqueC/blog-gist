@@ -6,7 +6,7 @@ export const login = async () => {
   const { accessToken: token } = credential;
   const { displayName, photoURL } = user;
   const { username } = additionalUserInfo;
-  return { token, user: { displayName, photoURL, username } };
+  return { token, userData: { displayName, photoURL, username } };
 };
 
 export const logout = async () => {
