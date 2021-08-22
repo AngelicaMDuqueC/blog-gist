@@ -1,7 +1,29 @@
 
+@import '../../sass/_blog';
 
-
-.header{
+.header {
     display: flex;
     flex-direction: row;
+    justify-content:space-between;
+    .sign-button {
+        font-family: $big-title;
+        font-size: 18px;
+        color: #666666;
+        letter-spacing: 0;
+        text-align: right;
+        font-weight: bolder;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        background-color: transparent;
+        &::after {
+            content: '';
+            border-bottom: 3px solid $dark-blue;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+        }
+
+    }
+
 }

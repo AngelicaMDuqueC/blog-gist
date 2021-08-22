@@ -27,7 +27,9 @@ const Header = () => {
         {currentUser ? (
           <CustomButton onClick={signOut}>LOG OUT</CustomButton>
         ) : (
-          <CustomButton onClick={signIn}>SIGN IN</CustomButton>
+          <CustomButton onClick={signIn} className="sign-button">
+            Sign in
+          </CustomButton>
         )}
       </div>
     </div>
