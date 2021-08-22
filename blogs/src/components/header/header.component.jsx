@@ -12,8 +12,8 @@ import "./header.styles.scss";
 const Header = () => {
   const currentUser = null;
   const signIn = async () => {
-    const { token } = await login();
-    console.log(token);
+    const { token, user } = await login();
+    console.log(user, token);
   };
   const signOut = async () => {
     await logout();
