@@ -2,7 +2,7 @@ import React from "react";
 
 import { useUser } from "../../context/user-context/user.context";
 
-import FromInput from "../form-input/form-input.component";
+import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
 import "./search.styles.scss";
@@ -16,7 +16,7 @@ const SearchForm = () => {
 
   return (
     <form onSubmit={onSummit}>
-      <FromInput
+      <FormInput
         value={user.username}
         onInput={(e) => changeUsername(e.target.value)}
         type="text"
