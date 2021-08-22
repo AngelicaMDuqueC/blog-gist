@@ -1,0 +1,10 @@
+@import '../../sass/_blog';
+
+
+.title {
+  font-family: $big-title;
+  font-size: $title-font-size;
+  color: $dark-blue;
+  letter-spacing: -5px;
+  line-height: 100px;
+}
