@@ -24,22 +24,28 @@ const Header = () => {
   };
   return (
     <div className="header">
-      <Link to="/">
+      <Link to="/" className="logo">
         <img src={logo} alt="Logo" />
       </Link>
-      {user?.displayName && (
-        <Profile userName={user?.displayName} imgUrl={user?.photoURL} />
-      )}
-      <div>
-        {user?.displayName ? (
-          <CustomButton onClick={signOut} className="sign-button">
-            Log out
-          </CustomButton>
-        ) : (
-          <CustomButton onClick={signIn} className="sign-button">
-            Sign in
-          </CustomButton>
+      <div className="button">
+        {user?.displayName && (
+          <Profile
+            userName={user?.displayName}
+            imgUrl={user?.photoURL}
+            className="profile"
+          />
         )}
+        <div className="btn-sign">
+          {user?.displayName ? (
+            <CustomButton onClick={signOut} className="sign-button">
+              Log out
+            </CustomButton>
+          ) : (
+            <CustomButton onClick={signIn} className="sign-button">
+              Sign in
+            </CustomButton>
+          )}
+        </div>
       </div>
     </div>
   );

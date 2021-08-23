@@ -13,12 +13,12 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <UserProvider>
         <Header />
         <Switch>
           <Route exact path="/" component={SearchPage} />
-          <Route path="/article" component={ArticlePage} />
+          <Route path="/article/:topicId" component={ArticlePage} />
           <Route exact path="/new" component={NewEntryPage} />
         </Switch>
       </UserProvider>

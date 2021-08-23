@@ -2,22 +2,42 @@
 @import '../../sass/_blog';
 
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
+    display: grid;
+    grid-gap:20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    "logo button"
+    ;
+    width: 1200px;
+    margin: 1% auto;
+    .logo {
+        grid-area: logo;
+        width: 60px;
+        & img {
+            width: 100%;
+        }
+    }
+
+    .button {
+        grid-area: button;
+        display: flex;
+        justify-content: flex-end;
+
+        & .btn-sign {
+            margin:auto 0
+        }
+    }
+
     .sign-button {
         font-family: $big-title;
         font-size: 18px;
         color: #666666;
         letter-spacing: 0;
-        text-align: right;
         font-weight: bolder;
         border: none;
         cursor: pointer;
-        display: inline-block;
+        display: block;
         background-color: transparent;
-        text-align: center;
-        height: 40px;
         &::after {
             content: '';
             border-bottom: 3px solid $dark-blue;

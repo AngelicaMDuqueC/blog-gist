@@ -1,11 +1,16 @@
 .searchPage {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 20px 80px;
+  width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "section img";
+  & .background-home {
+    grid-area: img;
+  }
   & .search-content {
+    grid-area: section;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    padding-right: 20%;
   }
 }

@@ -5,24 +5,50 @@ const UserInitialState = {
   displayName: "",
   photoURL: "",
   token: "",
+  searchUsername: "",
+  searchdisplayName: "",
+  searchphotoURL: "",
+  validSearch: false,
+  gists: [],
 };
 
 function UserReducer(state, action) {
   const { type, user } = action;
   switch (type) {
     case "CHANGE-USER": {
-      return { ...state, username: user };
+      return {
+        ...state,
+        searchUsername: user,
+        searchdisplayName: "",
+        searchphotoURL: "",
+      };
     }
     case "USER-LOGIN": {
       return {
         ...state,
         ...user,
+        username: state.searchUsername,
       };
     }
     case "USER-LOGOUT": {
       return {
         ...UserInitialState,
-        username: state.username,
+        searchUsername: state.username,
+      };
+    }
+    case "UPDATE-GISTS": {
+      return {
+        ...state,
+        gists: user,
+      };
+    }
+    case "UPDATE-SEARCH-RESULT": {
+      const { gists, searchedUser, validSearch } = user;
+      return {
+        ...state,
+        gists,
+        ...searchedUser,
+        validSearch,
       };
     }
     default: {
@@ -49,6 +75,18 @@ const UserActions = {
       type: "USER-LOGOUT",
     };
   },
+  updateGists(gists) {
+    return {
+      type: "UPDATE-GISTS",
+      user: gists,
+    };
+  },
+  searchGists(gists, searchedUser, validSearch) {
+    return {
+      type: "UPDATE-SEARCH-RESULT",
+      user: { gists, searchedUser, validSearch },
+    };
+  },
 };
 
 const UserContext = createContext();
@@ -67,9 +105,23 @@ function UserProvider(props) {
   const userLogout = () => {
     userDispatch(UserActions.logout());
   };
+
+  const updateGists = (gists) => {
+    userDispatch(UserActions.updateGists(gists));
+  };
+  const searchGists = (gists, searchedUser, validSearch) => {
+    userDispatch(UserActions.searchGists(gists, searchedUser, validSearch));
+  };
   return (
     <UserContext.Provider
-      value={{ user, changeUsername, userLogin, userLogout }}
+      value={{
+        user,
+        changeUsername,
+        userLogin,
+        userLogout,
+        updateGists,
+        searchGists,
+      }}
       {...props}
     />
   );

@@ -8,11 +8,9 @@ const Profile = ({ userName, imgUrl, post = false }) => {
   const displayName = true;
   return (
     <aside className="profile">
-      <figure>
-        <picture>
-          <img src={imgUrl} alt={userName}></img>
-        </picture>
-      </figure>
+      <picture>
+        <img src={imgUrl} alt={userName}></img>
+      </picture>
       {displayName && <h3>{userName}</h3>}
       {post && <Link to="/article">Posts</Link>}
     </aside>
